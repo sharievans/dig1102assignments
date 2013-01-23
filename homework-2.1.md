@@ -46,6 +46,8 @@ You remember how to push, right?
 
 ## Now get to it!
 
+
+
 `sharievans/bootstrap-image-gallery/main.js:19`
 ```javascript
     $('#start-slideshow').button().click(function () {
@@ -53,6 +55,7 @@ You remember how to push, right?
         // Function: button()
         // Function: click ()
 ```
+
 
 `sharievans/bootstrap-image-gallery/main.js:20`
 ```javascript
@@ -63,4 +66,19 @@ You remember how to push, right?
         // Function: data()
 ```
 
+
+`sharievans/bootstrap-image-gallery/bootstrap-image-gallery.js:17`
+```javascript
+    if (typeof define === 'function' && define.amd) {
+        // Operator: ===
+        // Conditional Statement: if()
+        // String: 'function'
+```
+
+
+`sharievans/bootstrap-image-gallery/bootstrap-image-gallery.js:62`
+```javascript
+    var originalShow = $.fn.modal.Constructor.prototype.show,
+    // Variable: originalShow
+```
 
