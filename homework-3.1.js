@@ -12,23 +12,31 @@
 /*jslint nomen: true, regexp: true */
 /*global define, window, document, jQuery */
 
-(function (factory) {
+(function (factory) 
+
+{
     'use strict';
-    if (typeof define === 'function' && define.amd) {
+    if (typeof define === 'function' && define.amd) 
+    {
         // Register as an anonymous AMD module:
         define([
             'jquery',
             'load-image',
             'bootstrap'
         ], factory);
-    } else {
+    } 
+    
+    else 
+    {
         // Browser globals:
         factory(
             window.jQuery,
             window.loadImage
         );
-    }
-}(function ($, loadImage) {
+    } 
+}
+
+(function ($, loadImage) {
     'use strict';
     // Bootstrap Image Gallery is an extension to the Modal dialog of Twitter's
     // Bootstrap toolkit, to ease navigation between a set of gallery images.
