@@ -13,7 +13,6 @@
 /*global define, window, document, jQuery */
 
 (function (factory) 
-
 {
     'use strict';
     if (typeof define === 'function' && define.amd) 
@@ -36,12 +35,15 @@
     } 
 }
 
-(function ($, loadImage) {
+
+(function ($, loadImage) 
+{
     'use strict';
     // Bootstrap Image Gallery is an extension to the Modal dialog of Twitter's
     // Bootstrap toolkit, to ease navigation between a set of gallery images.
     // It features transition effects, fullscreen mode and slideshow functionality.
-    $.extend($.fn.modal.defaults, {
+    $.extend($.fn.modal.defaults, 
+    {
         // Delegate to search gallery links from, can be anything that
         // is accepted as parameter for $():
         delegate: document,
@@ -67,47 +69,66 @@
         // Defines the image division for previous/next clicks:
         imageClickDivision: 0.5
     });
+    
     var originalShow = $.fn.modal.Constructor.prototype.show,
         originalHide = $.fn.modal.Constructor.prototype.hide;
-    $.extend($.fn.modal.Constructor.prototype, {
-        initLinks: function () {
+    $.extend($.fn.modal.Constructor.prototype, 
+    {
+        initLinks: function () 
+        {
             var $this = this,
                 options = this.options,
                 selector = options.selector ||
                     'a[data-target=' + options.target + ']';
             this.$links = $(options.delegate).find(selector)
-                .filter(options.filter).each(function (index) {
-                    if ($this.getUrl(this) === options.href) {
+                .filter(options.filter).each(function (index) 
+                {
+                    if ($this.getUrl(this) === options.href) 
+                    {
                         options.index = index;
                     }
                 });
-            if (!this.$links[options.index]) {
+                
+            if (!this.$links[options.index]) 
+            {
                 options.index = 0;
             }
         },
-        getUrl: function (element) {
+        
+        getUrl: function (element) 
+        {
             return element.href || $(element).data('href');
         },
-        getDownloadUrl: function (element) {
+        
+        getDownloadUrl: function (element) 
+        {
             return $(element).data('download');
         },
-        startSlideShow: function () {
+        
+        startSlideShow: function () 
+        {
             var $this = this;
-            if (this.options.slideshow) {
+            if (this.options.slideshow) 
+            {
                 this._slideShow = window.setTimeout(
-                    function () {
+                    function () 
+                    {
                         $this.next();
                     },
                     this.options.slideshow
                 );
             }
         },
+        
         stopSlideShow: function () {
             window.clearTimeout(this._slideShow);
         },
-        toggleSlideShow: function () {
+        
+        toggleSlideShow: function () 
+        {
             var node = this.$element.find('.modal-slideshow');
-            if (this.options.slideshow) {
+            if (this.options.slideshow) 
+            {
                 this.options.slideshow = 0;
                 this.stopSlideShow();
             } else {
@@ -116,19 +137,24 @@
             }
             node.find('i').toggleClass('icon-play icon-pause');
         },
-        preloadImages: function () {
+        
+        preloadImages: function () 
+        {
             var options = this.options,
                 range = options.index + options.preloadRange + 1,
                 link,
                 i;
-            for (i = options.index - options.preloadRange; i < range; i += 1) {
+            for (i = options.index - options.preloadRange; i < range; i += 1) 
+            {
                 link = this.$links[i];
                 if (link && i !== options.index) {
                     $('<img>').prop('src', this.getUrl(link));
                 }
             }
         },
-        loadImage: function () {
+        
+        loadImage: function () 
+        {
             var $this = this,
                 modal = this.$element,
                 index = this.options.index,
@@ -140,14 +166,18 @@
             modal.trigger('beforeLoad');
             // The timeout prevents displaying a loading status,
             // if the image has already been loaded:
-            this._loadingTimeout = window.setTimeout(function () {
+            this._loadingTimeout = window.setTimeout(function () 
+            {
                 modal.addClass('modal-loading');
             }, 100);
+            
             oldImg = modal.find('.modal-image').children().removeClass('in');
             // The timeout allows transition effects to finish:
-            window.setTimeout(function () {
+            window.setTimeout(function () 
+            {
                 oldImg.remove();
             }, 3000);
+            
             modal.find('.modal-title').text(this.$links[index].title);
             modal.find('.modal-download').prop(
                 'href',
@@ -155,7 +185,8 @@
             );
             this._loadingImage = loadImage(
                 url,
-                function (img) {
+                function (img) 
+                {
                     $this.img = img;
                     window.clearTimeout($this._loadingTimeout);
                     modal.removeClass('modal-loading');
@@ -167,42 +198,60 @@
             );
             this.preloadImages();
         },
-        showImage: function (img) {
+        showImage: function (img) 
+        {
             var modal = this.$element,
                 transition = $.support.transition && modal.hasClass('fade'),
                 method = transition ? modal.animate : modal.css,
                 modalImage = modal.find('.modal-image'),
                 clone,
                 forceReflow;
-            modalImage.css({
+            modalImage.css(
+                {
                 width: img.width,
                 height: img.height
             });
+            
             modal.find('.modal-title').css({ width: Math.max(img.width, 380) });
-            if (transition) {
+            
+            if (transition) 
+            {
                 clone = modal.clone().hide().appendTo(document.body);
             }
-            if ($(window).width() > 767) {
+            
+            if ($(window).width() > 767) 
+            {
                 method.call(modal.stop(), {
                     'margin-top': -((clone || modal).outerHeight() / 2),
                     'margin-left': -((clone || modal).outerWidth() / 2)
                 });
-            } else {
+            } 
+            
+            else 
+            {
                 modal.css({
                     top: ($(window).height() - (clone || modal).outerHeight()) / 2
                 });
             }
-            if (clone) {
+            
+            if (clone) 
+            {
                 clone.remove();
             }
+            
             modalImage.append(img);
             forceReflow = img.offsetWidth;
             modal.trigger('display');
-            if (transition) {
-                if (modal.is(':visible')) {
+            
+            if (transition) 
+            {
+                if (modal.is(':visible')) 
+                {
                     $(img).on(
                         $.support.transition.end,
-                        function (e) {
+                        
+                        function (e) 
+                        {
                             // Make sure we don't respond to other transitions events
                             // in the container element, e.g. from button elements:
                             if (e.target === img) {
@@ -211,41 +260,62 @@
                             }
                         }
                     ).addClass('in');
-                } else {
+                } 
+                
+                else 
+                {
                     $(img).addClass('in');
                     modal.one('shown', function () {
                         modal.trigger('displayed');
                     });
                 }
-            } else {
+                
+            } 
+            
+            else 
+            {
                 $(img).addClass('in');
                 modal.trigger('displayed');
             }
         },
-        abortLoad: function () {
-            if (this._loadingImage) {
+        
+        abortLoad: function () 
+        {
+            if (this._loadingImage) 
+            {
                 this._loadingImage.onload = this._loadingImage.onerror = null;
             }
             window.clearTimeout(this._loadingTimeout);
         },
-        prev: function () {
+        
+        prev: function () 
+        {
             var options = this.options;
             options.index -= 1;
-            if (options.index < 0) {
+            
+            if (options.index < 0) 
+            {
                 options.index = this.$links.length - 1;
             }
             this.loadImage();
         },
-        next: function () {
+        
+        next: function () 
+        {
             var options = this.options;
             options.index += 1;
-            if (options.index > this.$links.length - 1) {
+            
+            if (options.index > this.$links.length - 1) 
+            {
                 options.index = 0;
             }
             this.loadImage();
         },
-        keyHandler: function (e) {
-            switch (e.which) {
+        
+        keyHandler: function (e) 
+        {
+            switch (e.which) 
+            {
             case 37: // left
             case 38: // up
                 e.preventDefault();
@@ -258,58 +328,83 @@
                 break;
             }
         },
-        wheelHandler: function (e) {
+        
+        wheelHandler: function (e) 
+        {
             e.preventDefault();
             e = e.originalEvent;
             this._wheelCounter = this._wheelCounter || 0;
             this._wheelCounter += (e.wheelDelta || e.detail || 0);
             if ((e.wheelDelta && this._wheelCounter >= 120) ||
-                    (!e.wheelDelta && this._wheelCounter < 0)) {
+                    (!e.wheelDelta && this._wheelCounter < 0)) 
+                    {
                 this.prev();
                 this._wheelCounter = 0;
-            } else if ((e.wheelDelta && this._wheelCounter <= -120) ||
-                        (!e.wheelDelta && this._wheelCounter > 0)) {
+            } 
+            
+            else if ((e.wheelDelta && this._wheelCounter <= -120) ||
+                        (!e.wheelDelta && this._wheelCounter > 0)) 
+                        {
                 this.next();
                 this._wheelCounter = 0;
             }
         },
-        initGalleryEvents: function () {
+        
+        initGalleryEvents: function () 
+        {
             var $this = this,
                 modal = this.$element;
-            modal.find('.modal-image').on('click.modal-gallery', function (e) {
+            modal.find('.modal-image').on('click.modal-gallery', function (e) 
+            {
                 var modalImage = $(this);
-                if ($this.$links.length === 1) {
+                
+                if ($this.$links.length === 1) 
+                {
                     $this.hide();
                 } else {
                     if ((e.pageX - modalImage.offset().left) / modalImage.width() <
                             $this.options.imageClickDivision) {
                         $this.prev(e);
-                    } else {
+                    } 
+                    
+                    else 
+                    {
                         $this.next(e);
                     }
                 }
             });
-            modal.find('.modal-prev').on('click.modal-gallery', function (e) {
+            
+            modal.find('.modal-prev').on('click.modal-gallery', function (e) 
+            {
                 $this.prev(e);
             });
-            modal.find('.modal-next').on('click.modal-gallery', function (e) {
+            
+            modal.find('.modal-next').on('click.modal-gallery', function (e) 
+            {
                 $this.next(e);
             });
-            modal.find('.modal-slideshow').on('click.modal-gallery', function (e) {
+            
+            modal.find('.modal-slideshow').on('click.modal-gallery', function (e) 
+            {
                 $this.toggleSlideShow(e);
             });
+            
             $(document)
-                .on('keydown.modal-gallery', function (e) {
+                .on('keydown.modal-gallery', function (e) 
+                {
                     $this.keyHandler(e);
                 })
                 .on(
                     'mousewheel.modal-gallery, DOMMouseScroll.modal-gallery',
-                    function (e) {
+                    function (e) 
+                    {
                         $this.wheelHandler(e);
                     }
                 );
         },
-        destroyGalleryEvents: function () {
+        
+        destroyGalleryEvents: function () 
+        {
             var modal = this.$element;
             this.abortLoad();
             this.stopSlideShow();
@@ -319,42 +414,60 @@
                 .off('keydown.modal-gallery')
                 .off('mousewheel.modal-gallery, DOMMouseScroll.modal-gallery');
         },
-        show: function () {
-            if (!this.isShown && this.$element.hasClass('modal-gallery')) {
+        
+        show: function () 
+        {
+            if (!this.isShown && this.$element.hasClass('modal-gallery')) 
+            {
                 var modal = this.$element,
                     options = this.options,
                     windowWidth = $(window).width(),
                     windowHeight = $(window).height();
-                if (modal.hasClass('modal-fullscreen')) {
+                    
+                if (modal.hasClass('modal-fullscreen')) 
+                {
                     this._loadImageOptions = {
                         maxWidth: windowWidth,
                         maxHeight: windowHeight,
                         canvas: options.canvas
                     };
-                    if (modal.hasClass('modal-fullscreen-stretch')) {
+                    
+                    if (modal.hasClass('modal-fullscreen-stretch')) 
+                    {
                         this._loadImageOptions.minWidth = windowWidth;
                         this._loadImageOptions.minHeight = windowHeight;
                     }
-                } else {
-                    this._loadImageOptions = {
+                } 
+                
+                else 
+                {
+                    this._loadImageOptions = 
+                    {
                         maxWidth: windowWidth - options.offsetWidth,
                         maxHeight: windowHeight - options.offsetHeight,
                         canvas: options.canvas
                     };
                 }
-                if (windowWidth > 767) {
+                
+                if (windowWidth > 767) 
+                {
                     modal.css({
                         'margin-top': -(modal.outerHeight() / 2),
                         'margin-left': -(modal.outerWidth() / 2)
-                    });
-                } else {
+                    });   
+                } 
+                
+                else 
+                {
                     modal.css({
                         top: ($(window).height() - modal.outerHeight()) / 2
                     });
                 }
+                
                 this.initGalleryEvents();
                 this.initLinks();
-                if (this.$links.length) {
+                if (this.$links.length) 
+                {
                     modal.find('.modal-slideshow, .modal-prev, .modal-next')
                         .toggle(this.$links.length !== 1);
                     modal.toggleClass(
@@ -366,8 +479,11 @@
             }
             originalShow.apply(this, arguments);
         },
-        hide: function () {
-            if (this.isShown && this.$element.hasClass('modal-gallery')) {
+        
+        hide: function () 
+        {
+            if (this.isShown && this.$element.hasClass('modal-gallery')) 
+            {
                 this.options.delegate = document;
                 this.options.href = null;
                 this.destroyGalleryEvents();
@@ -375,28 +491,39 @@
             originalHide.apply(this, arguments);
         }
     });
-    $(function () {
+    
+    $(function () 
+    {
         $(document.body).on(
             'click.modal-gallery.data-api',
             '[data-toggle="modal-gallery"]',
-            function (e) {
+            function (e) 
+            {
                 var $this = $(this),
                     options = $this.data(),
                     modal = $(options.target),
                     data = modal.data('modal'),
                     link;
-                if (!data) {
+                    
+                if (!data) 
+                {
                     options = $.extend(modal.data(), options);
                 }
-                if (!options.selector) {
+                
+                if (!options.selector) 
+                {
                     options.selector = 'a[data-gallery=gallery]';
                 }
+                
                 link = $(e.target).closest(options.selector);
-                if (link.length && modal.length) {
+                
+                if (link.length && modal.length) 
+                {
                     e.preventDefault();
                     options.href = link.prop('href') || link.data('href');
                     options.delegate = link[0] !== this ? this : document;
-                    if (data) {
+                    if (data) 
+                    {
                         $.extend(data.options, options);
                     }
                     modal.modal(options);
