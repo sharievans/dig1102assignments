@@ -212,40 +212,44 @@
                 modalImage = modal.find( '.modal-image' ),
                 clone, 
                 forceReflow;
+                
             modalImage.css(
                 {
                 width: img.width,
                 height: img.height
             });
             
-            modal.find('.modal-title').css({ width: Math.max(img.width, 380) });
+            modal.find( '.modal-title' ).css( { width: Math.max( img.width, 380 ) 
+            });
             
-            if (transition) 
+            
+            if ( transition ) 
             {
-                clone = modal.clone().hide().appendTo(document.body);
+                clone = modal.clone().hide().appendTo( document.body );
             }
             
-            if ($(window).width() > 767) 
+            if ( $( window ).width() > 767) 
             {
-                method.call(modal.stop(), {
-                    'margin-top': -((clone || modal).outerHeight() / 2),
-                    'margin-left': -((clone || modal).outerWidth() / 2)
+                method.call( modal.stop(), {
+                    'margin-top': -( ( clone || modal ).outerHeight() / 2),
+                    'margin-left': -( ( clone || modal ).outerWidth() / 2)
                 });
             } 
             
             else 
             {
-                modal.css({
-                    top: ($(window).height() - (clone || modal).outerHeight()) / 2
+                modal.css
+                ({
+                    top: ( $( window ).height() - ( clone || modal ).outerHeight()) / 2
                 });
             }
             
-            if (clone) 
+            if ( clone ) 
             {
                 clone.remove();
             }
             
-            modalImage.append(img);
+            modalImage.append( img );
             forceReflow = img.offsetWidth;
             modal.trigger('display');
             
