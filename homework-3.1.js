@@ -12,23 +12,23 @@
 /*jslint nomen: true, regexp: true */
 /*global define, window, document, jQuery */
 
-(function (factory) 
+( function ( factory ) 
 {
     'use strict';
-    if (typeof define === 'function' && define.amd) 
+    if ( typeof define === 'function' && define.amd ) 
     {
         // Register as an anonymous AMD module:
-        define([
+        define ([
             'jquery',
             'load-image',
             'bootstrap'
-        ], factory);
+        ], factory );
     } 
     
     else 
     {
         // Browser globals:
-        factory(
+        factory (
             window.jQuery,
             window.loadImage
         );
@@ -36,13 +36,13 @@
 }
 
 
-(function ($, loadImage) 
+( function ( $, loadImage ) 
 {
     'use strict';
     // Bootstrap Image Gallery is an extension to the Modal dialog of Twitter's
     // Bootstrap toolkit, to ease navigation between a set of gallery images.
     // It features transition effects, fullscreen mode and slideshow functionality.
-    $.extend($.fn.modal.defaults, 
+    $.extend ( $.fn.modal.defaults, 
     {
         // Delegate to search gallery links from, can be anything that
         // is accepted as parameter for $():
@@ -80,29 +80,30 @@
                 options = this.options,
                 selector = options.selector ||
                     'a[data-target=' + options.target + ']';
-            this.$links = $(options.delegate).find(selector)
-                .filter(options.filter).each(function (index) 
+                    
+            this.$links = $ ( options.delegate ) .find( selector )
+                .filter ( options.filter ) .each( function ( index ) 
                 {
-                    if ($this.getUrl(this) === options.href) 
+                    if ( $this.getUrl ( this ) === options.href ) 
                     {
                         options.index = index;
                     }
                 });
                 
-            if (!this.$links[options.index]) 
+            if ( !this.$links [ options.index ] ) 
             {
                 options.index = 0;
             }
         },
         
-        getUrl: function (element) 
+        getUrl: function ( element ) 
         {
-            return element.href || $(element).data('href');
+            return element.href || $ ( element ).data ( 'href' );
         },
         
-        getDownloadUrl: function (element) 
+        getDownloadUrl: function ( element ) 
         {
-            return $(element).data('download');
+            return $ ( element ) .data ( 'download' );
         },
         
         startSlideShow: function () 
@@ -121,20 +122,23 @@
         },
         
         stopSlideShow: function () {
-            window.clearTimeout(this._slideShow);
+            window.clearTimeout( this._slideShow );
         },
         
         toggleSlideShow: function () 
         {
             var node = this.$element.find('.modal-slideshow');
-            if (this.options.slideshow) 
+            
+            if ( this.options.slideshow ) 
             {
                 this.options.slideshow = 0;
                 this.stopSlideShow();
+                
             } else {
                 this.options.slideshow = node.data('slideshow') || 5000;
                 this.startSlideShow();
             }
+            
             node.find('i').toggleClass('icon-play icon-pause');
         },
         
@@ -144,11 +148,12 @@
                 range = options.index + options.preloadRange + 1,
                 link,
                 i;
+                
             for (i = options.index - options.preloadRange; i < range; i += 1) 
             {
-                link = this.$links[i];
-                if (link && i !== options.index) {
-                    $('<img>').prop('src', this.getUrl(link));
+                link = this.$links [i] ;
+                if ( link && i !== options.index ) {
+                    $ ('<img>').prop('src', this.getUrl (link));
                 }
             }
         },
@@ -164,47 +169,48 @@
             this.abortLoad();
             this.stopSlideShow();
             modal.trigger('beforeLoad');
+            
             // The timeout prevents displaying a loading status,
             // if the image has already been loaded:
             this._loadingTimeout = window.setTimeout(function () 
             {
                 modal.addClass('modal-loading');
             }, 100);
-            
             oldImg = modal.find('.modal-image').children().removeClass('in');
+            
             // The timeout allows transition effects to finish:
-            window.setTimeout(function () 
+            window.setTimeout( function () 
             {
                 oldImg.remove();
             }, 3000);
             
-            modal.find('.modal-title').text(this.$links[index].title);
-            modal.find('.modal-download').prop(
+            modal.find( '.modal-title' ).text (this.$links[index].title);
+            modal.find( '.modal-download' ).prop (
                 'href',
                 download || url
             );
-            this._loadingImage = loadImage(
+            this._loadingImage = loadImage (
                 url,
                 function (img) 
                 {
                     $this.img = img;
-                    window.clearTimeout($this._loadingTimeout);
-                    modal.removeClass('modal-loading');
-                    modal.trigger('load');
-                    $this.showImage(img);
+                    window.clearTimeout( $this._loadingTimeout );
+                    modal.removeClass( 'modal-loading' );
+                    modal.trigger( 'load' );
+                    $this.showImage( img );
                     $this.startSlideShow();
                 },
                 this._loadImageOptions
             );
             this.preloadImages();
         },
-        showImage: function (img) 
+        showImage: function ( img ) 
         {
             var modal = this.$element,
-                transition = $.support.transition && modal.hasClass('fade'),
+                transition = $.support.transition && modal.hasClass( 'fade' ),
                 method = transition ? modal.animate : modal.css,
-                modalImage = modal.find('.modal-image'),
-                clone,
+                modalImage = modal.find( '.modal-image' ),
+                clone, 
                 forceReflow;
             modalImage.css(
                 {
