@@ -253,30 +253,30 @@
             forceReflow = img.offsetWidth;
             modal.trigger('display');
             
-            if (transition) 
+            if ( transition ) 
             {
-                if (modal.is(':visible')) 
+                if ( modal.is( ':visible' )) 
                 {
-                    $(img).on(
+                    $( img ).on(
                         $.support.transition.end,
                         
-                        function (e) 
+                        function ( e ) 
                         {
                             // Make sure we don't respond to other transitions events
                             // in the container element, e.g. from button elements:
-                            if (e.target === img) {
-                                $(img).off($.support.transition.end);
-                                modal.trigger('displayed');
+                            if ( e.target === img ) {
+                                $( img ).off( $.support.transition.end );
+                                modal.trigger( 'displayed' );
                             }
                         }
-                    ).addClass('in');
+                    ).addClass( 'in' );
                 } 
                 
                 else 
                 {
-                    $(img).addClass('in');
-                    modal.one('shown', function () {
-                        modal.trigger('displayed');
+                    $( img ) .addClass ( 'in' );
+                    modal.one ( 'shown', function ( ) {
+                        modal.trigger ( 'displayed' );
                     });
                 }
                 
@@ -284,18 +284,18 @@
             
             else 
             {
-                $(img).addClass('in');
-                modal.trigger('displayed');
+                $( img ) .addClass ( 'in' );
+                modal.trigger ( 'displayed' );
             }
         },
         
         abortLoad: function () 
         {
-            if (this._loadingImage) 
+            if ( this._loadingImage ) 
             {
                 this._loadingImage.onload = this._loadingImage.onerror = null;
             }
-            window.clearTimeout(this._loadingTimeout);
+            window.clearTimeout( this._loadingTimeout );
         },
         
         prev: function () 
@@ -303,7 +303,7 @@
             var options = this.options;
             options.index -= 1;
             
-            if (options.index < 0) 
+            if ( options.index < 0 ) 
             {
                 options.index = this.$links.length - 1;
             }
@@ -315,26 +315,26 @@
             var options = this.options;
             options.index += 1;
             
-            if (options.index > this.$links.length - 1) 
+            if ( options.index > this.$links.length - 1 ) 
             {
                 options.index = 0;
             }
-            this.loadImage();
+            this.loadImage ();
         },
         
-        keyHandler: function (e) 
+        keyHandler: function ( e ) 
         {
-            switch (e.which) 
+            switch ( e.which ) 
             {
             case 37: // left
             case 38: // up
-                e.preventDefault();
-                this.prev();
+                e.preventDefault ();
+                this.prev ();
                 break;
             case 39: // right
             case 40: // down
-                e.preventDefault();
-                this.next();
+                e.preventDefault ();
+                this.next ();
                 break;
             }
         },
@@ -343,17 +343,19 @@
         {
             e.preventDefault();
             e = e.originalEvent;
+            
             this._wheelCounter = this._wheelCounter || 0;
             this._wheelCounter += (e.wheelDelta || e.detail || 0);
-            if ((e.wheelDelta && this._wheelCounter >= 120) ||
-                    (!e.wheelDelta && this._wheelCounter < 0)) 
+            
+            if (( e.wheelDelta && this._wheelCounter >= 120 ) ||
+                    ( !e.wheelDelta && this._wheelCounter < 0 )) 
                     {
-                this.prev();
+                this.prev ();
                 this._wheelCounter = 0;
             } 
             
-            else if ((e.wheelDelta && this._wheelCounter <= -120) ||
-                        (!e.wheelDelta && this._wheelCounter > 0)) 
+            else if (( e.wheelDelta && this._wheelCounter <= -120 ) ||
+                        ( !e.wheelDelta && this._wheelCounter > 0 )) 
                         {
                 this.next();
                 this._wheelCounter = 0;
@@ -364,51 +366,53 @@
         {
             var $this = this,
                 modal = this.$element;
-            modal.find('.modal-image').on('click.modal-gallery', function (e) 
+            modal.find( '.modal-image' ) .on ( 'click.modal-gallery', function (e) 
             {
                 var modalImage = $(this);
                 
-                if ($this.$links.length === 1) 
+                if ( $this.$links.length === 1 ) 
                 {
-                    $this.hide();
-                } else {
-                    if ((e.pageX - modalImage.offset().left) / modalImage.width() <
-                            $this.options.imageClickDivision) {
-                        $this.prev(e);
+                    $this.hide ();
+                } 
+                else 
+                {
+                    if (( e.pageX - modalImage.offset ().left ) / modalImage.width () <
+                            $this.options.imageClickDivision ) {
+                        $this.prev (e);
                     } 
                     
                     else 
                     {
-                        $this.next(e);
+                        $this.next (e);
                     }
                 }
             });
             
-            modal.find('.modal-prev').on('click.modal-gallery', function (e) 
+            modal.find( '.modal-prev' ) .on ( 'click.modal-gallery', function (e) 
             {
-                $this.prev(e);
+                $this.prev (e);
             });
             
-            modal.find('.modal-next').on('click.modal-gallery', function (e) 
+            modal.find( '.modal-next' ) .on ( 'click.modal-gallery', function (e) 
             {
                 $this.next(e);
             });
             
-            modal.find('.modal-slideshow').on('click.modal-gallery', function (e) 
+            modal.find( '.modal-slideshow' ) .on ( 'click.modal-gallery', function (e) 
             {
-                $this.toggleSlideShow(e);
+                $this.toggleSlideShow (e);
             });
             
-            $(document)
-                .on('keydown.modal-gallery', function (e) 
+            $ ( document )
+                .on ( 'keydown.modal-gallery', function (e) 
                 {
-                    $this.keyHandler(e);
+                    $this.keyHandler (e);
                 })
-                .on(
+                .on (
                     'mousewheel.modal-gallery, DOMMouseScroll.modal-gallery',
                     function (e) 
                     {
-                        $this.wheelHandler(e);
+                        $this.wheelHandler (e);
                     }
                 );
         },
@@ -416,25 +420,25 @@
         destroyGalleryEvents: function () 
         {
             var modal = this.$element;
-            this.abortLoad();
-            this.stopSlideShow();
-            modal.find('.modal-image, .modal-prev, .modal-next, .modal-slideshow')
-                .off('click.modal-gallery');
-            $(document)
-                .off('keydown.modal-gallery')
-                .off('mousewheel.modal-gallery, DOMMouseScroll.modal-gallery');
+            this.abortLoad ();
+            this.stopSlideShow ();
+            modal.find( '.modal-image, .modal-prev, .modal-next, .modal-slideshow' )
+                .off ( 'click.modal-gallery' );
+            $( document )
+                .off ( 'keydown.modal-gallery' )
+                .off ( 'mousewheel.modal-gallery, DOMMouseScroll.modal-gallery') ;
         },
         
         show: function () 
         {
-            if (!this.isShown && this.$element.hasClass('modal-gallery')) 
+            if ( !this.isShown && this.$element.hasClass ( 'modal-gallery' )) 
             {
                 var modal = this.$element,
                     options = this.options,
                     windowWidth = $(window).width(),
                     windowHeight = $(window).height();
                     
-                if (modal.hasClass('modal-fullscreen')) 
+                if ( modal.hasClass ( 'modal-fullscreen' )) 
                 {
                     this._loadImageOptions = {
                         maxWidth: windowWidth,
@@ -442,7 +446,7 @@
                         canvas: options.canvas
                     };
                     
-                    if (modal.hasClass('modal-fullscreen-stretch')) 
+                    if ( modal.hasClass ( 'modal-fullscreen-stretch' )) 
                     {
                         this._loadImageOptions.minWidth = windowWidth;
                         this._loadImageOptions.minHeight = windowHeight;
@@ -459,52 +463,52 @@
                     };
                 }
                 
-                if (windowWidth > 767) 
+                if ( windowWidth > 767 ) 
                 {
-                    modal.css({
-                        'margin-top': -(modal.outerHeight() / 2),
-                        'margin-left': -(modal.outerWidth() / 2)
+                    modal.css ({
+                        'margin-top': -( modal.outerHeight () / 2),
+                        'margin-left': -( modal.outerWidth () / 2)
                     });   
                 } 
                 
                 else 
                 {
-                    modal.css({
-                        top: ($(window).height() - modal.outerHeight()) / 2
+                    modal.css ({
+                        top: ( $ ( window ) .height () - modal.outerHeight()) / 2
                     });
                 }
                 
-                this.initGalleryEvents();
-                this.initLinks();
-                if (this.$links.length) 
+                this.initGalleryEvents ();
+                this.initLinks ();
+                if ( this.$links.length ) 
                 {
-                    modal.find('.modal-slideshow, .modal-prev, .modal-next')
-                        .toggle(this.$links.length !== 1);
-                    modal.toggleClass(
+                    modal.find( '.modal-slideshow, .modal-prev, .modal-next' )
+                        .toggle ( this.$links.length !== 1 );
+                    modal.toggleClass (
                         'modal-single',
                         this.$links.length === 1
                     );
-                    this.loadImage();
+                    this.loadImage ();
                 }
             }
-            originalShow.apply(this, arguments);
+            originalShow.apply( this, arguments );
         },
         
         hide: function () 
         {
-            if (this.isShown && this.$element.hasClass('modal-gallery')) 
+            if ( this.isShown && this.$element.hasClass ( 'modal-gallery' )) 
             {
                 this.options.delegate = document;
                 this.options.href = null;
-                this.destroyGalleryEvents();
+                this.destroyGalleryEvents ();
             }
-            originalHide.apply(this, arguments);
+            originalHide.apply( this, arguments );
         }
     });
     
-    $(function () 
+    $ ( function () 
     {
-        $(document.body).on(
+        $ ( document.body ) .on (
             'click.modal-gallery.data-api',
             '[data-toggle="modal-gallery"]',
             function (e) 
