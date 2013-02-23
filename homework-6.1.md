@@ -99,3 +99,37 @@ sharievans/jquery/manipulation.js/454
 // while incrementing j-1 numbers
                 
 ```
+sharievans/jquery/event.js/353
+```javascript
+    	i = 0;
+		while ( (matched = handlerQueue[ i++ ]) && !event.isPropagationStopped() ) {
+			event.currentTarget = matched.elem;
+
+			j = 0;
+			while ( (handleObj = matched.handlers[ j++ ]) && !event.isImmediatePropagationStopped() ) {
+
+				// Triggered event must either 1) have no namespace, or
+				// 2) have namespace(s) a subset or equal to those in the bound event (both can have no namespace).
+				if ( !event.namespace_re || event.namespace_re.test( handleObj.namespace ) ) {
+
+					event.handleObj = handleObj;
+					event.data = handleObj.data;
+
+					ret = ( (jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler )
+							.apply( matched.elem, args );
+
+					if ( ret !== undefined ) {
+						if ( (event.result = ret) === false ) {
+							event.preventDefault();
+							event.stopPropagation();
+						}
+					}
+				}
+			}
+		}
+//while ( (matched = handlerQueue[ i++ ]) && !event.isPropagationStopped() ) {
+//while matched is equal to handlerQueue [incresaing numbers] and not event Propagation is Stopped.
+
+//while ( (handleObj = matched.handlers[ j++ ]) && !event.isImmediatePropagationStopped() ) {
+//while handleOject is matched.handlers [increasing numbers] and not event is Immediate Propagation is Stopped.
+```
