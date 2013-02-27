@@ -43,3 +43,21 @@ function restoreScript( elem ) {
 // In-scope variable: match
 // Return: elem;
 ```
+sharievans/jquery/manipulation/569
+
+```javascript
+function setGlobalEval( elems, refElements ) {
+    var l = elems.length,
+		i = 0;
+
+	for ( ; i < l; i++ ) {
+		data_priv.set(
+			elems[ i ], "globalEval", !refElements || data_priv.get( refElements[ i ], "globalEval" )
+		);
+	}
+}
+// Name: setGlobalEval
+// Argument: elems, refElements
+// In-scope variables: l = elems.length, i = 0
+
+```
