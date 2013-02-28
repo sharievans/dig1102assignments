@@ -59,5 +59,21 @@ function setGlobalEval( elems, refElements ) {
 // Name: setGlobalEval
 // Argument: elems, refElements
 // In-scope variables: l = elems.length, i = 0
+```
 
+sharievans/jquery/callbacks.js/5
+
+```javascript
+
+function createOptions( options ) {
+    var object = optionsCache[ options ] = {};
+	jQuery.each( options.match( core_rnotwhite ) || [], function( _, flag ) {
+		object[ flag ] = true;
+	});
+	return object;
+}
+// Name: createOptions
+// Argument: options
+// In-scope variable:object
+// Return: object;
 ```
