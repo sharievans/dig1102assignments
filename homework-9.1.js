@@ -53,3 +53,15 @@ var assert = require("assert");
  assert.equal (-1, addition (0, -1));
  
  
+ //Writing the subtraction function
+ function subtraction (a,b)
+ {
+     return (a - b);
+ }
+ 
+ // Attempt at subtraction failing test
+ assert.equal (0, subtraction (1,1));
+ //Test Failed: subtraction not defined
+ //Function Added, went from red to green
+ 
+ 
