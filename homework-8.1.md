@@ -25,7 +25,7 @@ core.js/410
 		// The try/catch supresses exceptions thrown when attempting to access
 		// the "constructor" property of certain host objects, ie. |window.location|
 		try {
-			if ( obj.constructor &&
+			if ( obj.constructor &&  //This is a property
 					!core_hasOwn.call( obj.constructor.prototype, "isPrototypeOf" ) ) {
 				return false;
 			}

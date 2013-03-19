@@ -64,4 +64,14 @@ var assert = require("assert");
  //Test Failed: subtraction not defined
  //Function Added, went from red to green
  
+ //Here are the other tests
+ assert.equal (1, subtraction (1,0));
+ assert.equal (2, subtraction (1,-1));
+ assert.equal (-2, subtraction (-1,1));
+ assert.equal (-1, subtraction (-1,0));
+ assert.equal (0, subtraction (-1,-1));
+ assert.equal (-1, subtraction (0,1));
+ assert.equal (0, subtraction (0,0));
+ assert.equal (1, subtraction (0,-1));
+ 
  
