@@ -74,4 +74,15 @@ var assert = require("assert");
  assert.equal (0, subtraction (0,0));
  assert.equal (1, subtraction (0,-1));
  
+ //Adding the multiplication function
+ function multiplication (a,b)
+ {
+     return (a * b);
+ }
+ 
+ 
+ //Attempt at the multiplication test
+ assert.equal (1, multiplication (1,1));
+ //Test Failed: multiplicaion not defined
+ //Function Added: red to green
  
