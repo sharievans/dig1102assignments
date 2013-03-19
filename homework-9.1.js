@@ -96,3 +96,15 @@ var assert = require("assert");
  assert.equal (0, multiplication (0,0));
  assert.equal (0, multiplication (0,-1));
  
+ //Adding division function
+ function division (a,b)
+ {
+     return (a / b);
+ }
+ 
+ 
+ //Attempt at division test
+ assert.equal (1, division (1,1));
+ //Test failed: division not defined
+ //Function added: red to green
+ 
