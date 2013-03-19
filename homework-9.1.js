@@ -99,12 +99,27 @@ var assert = require("assert");
  //Adding division function
  function division (a,b)
  {
-     return (a / b);
- }
- 
+     if (a != 0);
+        {
+            return (a / b);
+        }
+    else 
+        {
+            return "Infinity"
+        }
+ } 
  
  //Attempt at division test
  assert.equal (1, division (1,1));
  //Test failed: division not defined
  //Function added: red to green
+ 
+ //Here are the other tests
+ assert.equal ("Infinity", division (1,0));
+ //Dividing into zero is barffing!
+ 
+ assert.equal (-1, division (1,-1));
+ assert.equal (-1, division (-1,1));
+ assert.equal ("Infinity", division (-1,0));
+ assert.equal (1, division (-1,-1));
  
