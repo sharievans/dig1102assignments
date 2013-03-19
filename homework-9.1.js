@@ -86,3 +86,13 @@ var assert = require("assert");
  //Test Failed: multiplicaion not defined
  //Function Added: red to green
  
+ //Here are the other tests
+ assert.equal (0, multiplication (1,0));
+ assert.equal (-1, multiplication (1,-1));
+ assert.equal (-1, multiplication (-1,1));
+ assert.equal (0, multiplication (-1,0));
+ assert.equal (1, multiplication (-1,-1));
+ assert.equal (0, multiplication (0,1));
+ assert.equal (0, multiplication (0,0));
+ assert.equal (0, multiplication (0,-1));
+ 
