@@ -38,6 +38,16 @@ function addition (a, b)
     
  
 //Writing the first test
-assert.equal(2, addition (1, 1));
+assert.equal (2, addition (1, 1));
 //Failed: addition is not defined
+
+//Here are the other tests
+assert.equal (1, addition (1,0));
+assert.equal (0, addition (1,-1));
+assert.equal (0, addition (-1,1));
+assert.equal (-1, addition (-1,0));
+assert.equal (-2, addition (-1,-1));
+assert.equal (1, addition (0,1));
+assert.equal (0, addition (0,0));
+assert.equal (1, addition (0,1));
  
