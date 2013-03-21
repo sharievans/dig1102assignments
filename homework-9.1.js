@@ -61,4 +61,14 @@ function subtraction (a,b)
 //First subtraction test
 assert.equal (0, subtraction (1,1));
 //Error: subtraction not defined
+
+//Here are the extra tests
+assert.equal (1, subtraction (1,0));
+assert.equal (2, subtraction (1,-1));
+assert.equal (-2, subtraction (-1,1));
+assert.equal (-1, subtraction (-1,0));
+assert.equal (0, subtraction (-1,-1));
+assert.equal (-1, subtraction (0,1));
+assert.equal (0, subtraction (0,0));
+assert.equal (1, subtraction (0,-1));
  
