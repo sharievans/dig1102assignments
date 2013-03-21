@@ -30,96 +30,14 @@ var assert = require("assert");
  */
  
  
- //Writing the function
- function addition (a,b)
- {
-     return ( a + b );
- }
+//Writing the function
+function addition (a, b)
+    {   
+        return (a + b);
+    }
+    
  
- 
- // First attempt at a failing test
- assert.equal (2, addition (1,1));
- // Test Failed: addition not defined
- // function added, went from red to green
- 
- //Here are the other tests
- assert.equal (1, addition (1,0));
- assert.equal (0, addition (1,-1));
- assert.equal (0, addition (-1, 1));
- assert.equal (-1, addition (-1,0));
- assert.equal (-2, addition (-1,-1));
- assert.equal (1, addition (0, 1));
- assert.equal (0, addition (0,0));
- assert.equal (-1, addition (0, -1));
- 
- 
- //Writing the subtraction function
- function subtraction (a,b)
- {
-     return (a - b);
- }
- 
- // Attempt at subtraction failing test
- assert.equal (0, subtraction (1,1));
- //Test Failed: subtraction not defined
- //Function Added, went from red to green
- 
- //Here are the other tests
- assert.equal (1, subtraction (1,0));
- assert.equal (2, subtraction (1,-1));
- assert.equal (-2, subtraction (-1,1));
- assert.equal (-1, subtraction (-1,0));
- assert.equal (0, subtraction (-1,-1));
- assert.equal (-1, subtraction (0,1));
- assert.equal (0, subtraction (0,0));
- assert.equal (1, subtraction (0,-1));
- 
- //Adding the multiplication function
- function multiplication (a,b)
- {
-     return (a * b);
- }
- 
- 
- //Attempt at the multiplication test
- assert.equal (1, multiplication (1,1));
- //Test Failed: multiplicaion not defined
- //Function Added: red to green
- 
- //Here are the other tests
- assert.equal (0, multiplication (1,0));
- assert.equal (-1, multiplication (1,-1));
- assert.equal (-1, multiplication (-1,1));
- assert.equal (0, multiplication (-1,0));
- assert.equal (1, multiplication (-1,-1));
- assert.equal (0, multiplication (0,1));
- assert.equal (0, multiplication (0,0));
- assert.equal (0, multiplication (0,-1));
- 
- //Adding division function
- function division (a,b)
- {
-     if (a != 0);
-        {
-            return (a / b);
-        }
-    else 
-        {
-            return "Infinity"
-        }
- } 
- 
- //Attempt at division test
- assert.equal (1, division (1,1));
- //Test failed: division not defined
- //Function added: red to green
- 
- //Here are the other tests
- assert.equal ("Infinity", division (1,0));
- //Dividing into zero is barffing!
- 
- assert.equal (-1, division (1,-1));
- assert.equal (-1, division (-1,1));
- assert.equal ("Infinity", division (-1,0));
- assert.equal (1, division (-1,-1));
+//Writing the first test
+assert.equal(2, addition (1, 1));
+//Failed: addition is not defined
  
