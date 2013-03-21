@@ -50,4 +50,15 @@ assert.equal (-2, addition (-1,-1));
 assert.equal (1, addition (0,1));
 assert.equal (0, addition (0,0));
 assert.equal (1, addition (0,1));
+
+
+//Adding Subtraction function
+function subtraction (a,b)
+    {
+        return (a - b);
+    }
+
+//First subtraction test
+assert.equal (0, subtraction (1,1));
+//Error: subtraction not defined
  
