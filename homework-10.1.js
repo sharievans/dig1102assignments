@@ -35,3 +35,10 @@ var assert = require("assert");
  
  assert.equal( 2, addition (1,1));
  assert.equal( 1, addition (1,0));
+ 
+ function testAddition (a, b, c, message) {
+     assert( addition( a, b)==c, message);
+ }
+ 
+testAddition (1, 1, 2, '1 + 1 = 2');
+
