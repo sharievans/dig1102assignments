@@ -43,5 +43,11 @@ assert( addition( 1,1) == 2, '1 + 1 = 2');
 
 testAddition( 1, 1, 2, '1 + 1 = 2');
 testAddition( 1, 0, 1, '1 + 0 = 1');
-testAddition( 1, -1, 0, '1 + (-1) =0');
+testAddition( 1, -1, 0, '1 + (-1) = 0');
+testAddition( -1, 1, 0, '-1 + 1 = 0');
+testAddition( -1, 0, -1, '-1 + 0 = -1');
+testAddition( -1, -1, -2, '-1 + (-1) = -2');
+testAddition( 0, 1, 1, '0 + 1 = 1');
+testAddition( 0, 0, 0, '0 + 0 = 0');
+testAddition(0, -1, -1, '0 + (-1) = -1');
 
