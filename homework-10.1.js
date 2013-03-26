@@ -30,7 +30,8 @@ var assert = require("assert");
  */
  
  function addition (a,b) {
-     return 2;
+     return (a + b);
  }
  
- assert.equal(2, addition (1,1));
+ assert.equal( 2, addition (1,1));
+ assert.equal( 1, addition (1,0));
