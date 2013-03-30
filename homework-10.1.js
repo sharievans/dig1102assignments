@@ -37,3 +37,9 @@ function addition( a, b ) {
 assert( addition( 1, 1 ) === 2, '1 + 1 = 2');
 assert( addition( 1, 0 ) === 1, '1 + 0 = 1');
 
+
+function testAddition( a, b, c, message) {
+    assert( addition( a, b ) === c, message);
+}
+
+testAddition( 1, 1, 2, '1 + 1 = 2');
