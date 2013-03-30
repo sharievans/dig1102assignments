@@ -51,9 +51,26 @@ testAddition( 0, 1, 1, '0 + 1 = 1');
 testAddition( 0, 0, 0, '0 + 0 = 0');
 testAddition( 0, -1, -1, '0 + (-1) = -1');
 
+
+/**
+ * testing 
+ * one | two 
+ * ====+=====
+ *  +1 | +1  
+ *  +1 | +0  
+ *  +1 | -1 
+ *  -1 | +1 
+ *  -1 | +0 
+ *  -1 | -1 
+ *  +0 | +1
+ *  +0 | +0
+ *  +0 | -1
+ */
+ 
 function division( a, b ) {
-    return 1;
+    return( a / b );
 }
 
 assert( division( 1, 1 ) === 1, '1 / 1 = 1');
+assert( division( 1, 0 ) === Infinity, '1 / 0 = Infinity');
 
