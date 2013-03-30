@@ -51,4 +51,9 @@ testAddition( 0, 1, 1, '0 + 1 = 1');
 testAddition( 0, 0, 0, '0 + 0 = 0');
 testAddition( 0, -1, -1, '0 + (-1) = -1');
 
+function division( a, b ) {
+    return 1;
+}
+
+assert( division( 1, 1 ) === 1, '1 / 1 = 1');
 
