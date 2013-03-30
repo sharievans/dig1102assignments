@@ -90,5 +90,7 @@ testDivision( -1, 1, -1, '-1 / 1 = -1');
 testDivision( -1, 0, -Infinity, '-1 / 0 = -Infinity');
 testDivision( -1, -1, 1, '-1 / -1 = -Infinity');
 testDivision( 0, 1, 'You cannot divide 0', '0 / 1 = You cannot divide 0');
+testDivision( 0, 0, 'You cannot divide 0', '0 / 0 = You cannot divide 0');
+testDivision( 0, -1, 'You cannot divide 0', '0 / -1 = You cannor divide 0');
 
 
