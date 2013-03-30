@@ -30,9 +30,10 @@ var assert = require("assert");
  */
  
 function addition( a, b ) {
-    return 2;
+    return( a + b );
 }
 
  
 assert( addition( 1, 1 ) === 2, '1 + 1 = 2');
+assert( addition( 1, 0 ) === 1, '1 + 0 = 1');
 
