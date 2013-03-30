@@ -68,9 +68,27 @@ testAddition( 0, -1, -1, '0 + (-1) = -1');
  */
  
 function division( a, b ) {
+    if ( a !== 0 )
     return( a / b );
+    
+    else 
+    return( 'You cannot divide 0');
 }
 
 assert( division( 1, 1 ) === 1, '1 / 1 = 1');
 assert( division( 1, 0 ) === Infinity, '1 / 0 = Infinity');
+
+
+function testDivision( a, b, c, message ) {
+    assert( division( a, b) === c, message );
+}
+
+
+testDivision( 1, 1, 1, '1 / 1 = 1');
+testDivision( 1, -1, -1, '1 / -1 = -1');
+testDivision( -1, 1, -1, '-1 / 1 = -1');
+testDivision( -1, 0, -Infinity, '-1 / 0 = -Infinity');
+testDivision( -1, -1, 1, '-1 / -1 = -Infinity');
+testDivision( 0, 1, 'You cannot divide 0', '0 / 1 = You cannot divide 0');
+
 
