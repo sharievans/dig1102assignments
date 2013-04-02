@@ -6,6 +6,9 @@ module.exports = {
     */
     
     division: function division( a, b ) {
+        if ( b === 0 )
+        return 0;
+        
         return 1;
     }
 }
