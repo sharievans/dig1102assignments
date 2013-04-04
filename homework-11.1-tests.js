@@ -20,3 +20,4 @@ assert( calculator.division( 1, -1 ) === -1);
 assert( calculator.division( -1, 1 ) === -1);
 assert( calculator.division( -1, 0 ) === 0);
 assert( calculator.division( -1, -1) === 1);
+assert( calculator.division( 0, 1) === 0);
