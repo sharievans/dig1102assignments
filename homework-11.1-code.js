@@ -4,14 +4,8 @@ module.exports = {
         return 'something';
     }
     */
-    
-    division: function division( a, b ) {
-        if ( b === 0 )
-        return 0;
-        
-        if ( a || b === -1)
-        return -1;
-        
-        return 1;
-    }
+}
+
+division: function division ( a, b ) {
+    return 1;
 }
