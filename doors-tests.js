@@ -14,3 +14,6 @@ assert.equal( hundredDoors.hallway.doors.length, 10);
 hundredDoors.hallway.doors.forEach( function( door ) {
     assert.equal( door, 0); 
     });
+    
+//can we change the state of the doors? (Toggle function)
+assert( hundredDoors.hallway.toggle);
