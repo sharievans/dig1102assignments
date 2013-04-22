@@ -20,3 +20,6 @@ assert( hundredDoors.hallway.toggle);
 
 //can we make a door open?
 assert( hundredDoors.hallway.toggle(0) === 1);
+
+//can we make an open door closed?
+assert( hundredDoors.hallway.toggle(1) === 0);
