@@ -17,3 +17,6 @@ hundredDoors.hallway.doors.forEach( function( door ) {
     
 //can we change the state of the doors? (Toggle function)
 assert( hundredDoors.hallway.toggle);
+
+//can we make a door open?
+assert( hundredDoors.hallway.toggle(0) === 1);
