@@ -9,3 +9,8 @@ assert( hundredDoors.hallway.doors );
 
 //test: do we have 10 doors?
 assert.equal( hundredDoors.hallway.doors.length, 10);
+
+//test: are all the doors "closed"?
+hundredDoors.hallway.doors.forEach( function( door ) {
+    assert.equal( door, 0); 
+    });
