@@ -19,4 +19,6 @@ hundredDoors.hallway.doors.forEach( function (door) {
 assert( hundredDoors.hallway.toggle );
 
 // can we change closed to open?
+assert( hundredDoors.hallway.toggle( 0 ) === 1 );
+
 // can we change open to closed?
