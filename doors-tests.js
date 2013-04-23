@@ -22,3 +22,4 @@ assert( hundredDoors.hallway.toggle );
 assert( hundredDoors.hallway.toggle( 0 ) === 1 );
 
 // can we change open to closed?
+assert( hundredDoors.hallway.toggle( 1 ) === 0 );
