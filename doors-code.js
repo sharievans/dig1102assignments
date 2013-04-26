@@ -18,5 +18,7 @@
 */
 
 module.exports = {
-    hallway: {}
+    hallway: {
+        doors: []
+    }
 }
