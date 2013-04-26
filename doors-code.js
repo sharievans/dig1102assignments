@@ -27,6 +27,9 @@ module.exports = {
             else {
                 return 0;
             }
+        },
+        pass: function() {
+            
         }
     }
 }
