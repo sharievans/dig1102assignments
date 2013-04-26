@@ -21,8 +21,12 @@ module.exports = {
     hallway: {
         doors: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
         toggle: function( door ) {
-        if ( door === 0 );
-        return 1;
+            if ( door === 0 ) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
         }
     }
 }
