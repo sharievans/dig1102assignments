@@ -19,6 +19,8 @@
 
 module.exports = {
     hallway: {
-        doors: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+        doors: [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+        toggle: function() {
+        }
     }
 }
