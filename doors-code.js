@@ -29,7 +29,8 @@ module.exports = {
             }
         },
         pass: function() {
-            
+            this.doors = this.doors.map( this.toggle );
+            return this.doors;
         }
     }
 }
