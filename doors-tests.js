@@ -3,3 +3,6 @@ var assert = require( "assert" ),
     
 //do we have a hallway?
 assert( hundredDoors.hallway );
+
+//Do we have doors in our hallway?
+assert( hundredDoors.hallway.doors );
